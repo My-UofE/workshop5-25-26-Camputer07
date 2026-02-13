@@ -244,7 +244,7 @@ You may find it useful to keep in mind that whenever `new` is used to create an 
 
  ii. you successfully commit and push your `PassByValueApp.java` file to the GitHub classroom repository where they can be accessed by the teaching staff. 
 
-### `StringFormatApp.java`: String formatting
+### 3. `StringFormatApp.java`: String formatting
 
 For printing on the screen, Java offers the `System.out.printf()` method
 which allows control of how literals can be displayed as part of the program output.
@@ -526,9 +526,9 @@ Where your Martian age is inserted to the nearest whole number.
 
  ii. you successfully commit and push your `StringFormatApp.java` file to the GitHub classroom repository where they can be accessed by the teaching staff. 
 
- ## Part B. Books and authors
+## Part B. Books and authors
 
- ### `Author.java`
+ ### 4. `Author.java`
 
  A class called `Author` (as shown in the UML class diagram below) is designed to model a book’s author. It shows the structure of the class including attributes and methods. In the diagram `+` means public members and `−` means private members.
 
