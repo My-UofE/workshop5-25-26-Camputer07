@@ -50,34 +50,47 @@ public class BookShopApp {
             4
         ));
 
-        // Iterate through each book to determine the width for each column
-        int firstCol = 0;
-        int secondCol = 0;
-        int thirdCol = 0;
-        int fourthCol = 0;
-        for (Book b2 : stockList) {
-            if (b2.getName().length() > firstCol) {firstCol = b2.getName().length();}
-            if (b2.getAuthorNames().length() > secondCol) {secondCol = b2.getAuthorNames().length();}
-            if (Double.toString(b2.getPrice()).length() > thirdCol) {thirdCol = Double.toString(b2.getPrice()).length();}
-            if (Integer.toString(b2.getQty()).length() > fourthCol) {fourthCol = Integer.toString(b2.getQty()).length();}
-        }
-
-        System.out.println("\nStocklist");
-        // Output each book
-        for (Book b : stockList) {
-            System.out.printf("| %-"+firstCol+"s | %-"+secondCol+"s | %"+(thirdCol+1)+".2f | %0"+fourthCol+"d |%n", 
-            b.getName(), b.getAuthorNames(), b.getPrice(), b.getQty());
-        }
+        // Output the stocklist
+        OutputStockList(stockList);
 
         for (Book b3 : stockList) {
             if (b3.getName().toLowerCase().equals(searchFor)) {b3.setQty(b3.getQty()-1);}
         }
 
         // Output the updated stocklist
-        System.out.println("\nUpdated Stocklist");
-        for (Book b : stockList) {
+        OutputStockList(stockList);
+
+        // Remove any book with the name "cobol" in
+        String removeAll = "cobol";
+        System.out.println("\nRemoving all books with term '" + removeAll + "' in title..."); 
+        
+        // Iterate through each book and remove if necessary
+        int originalSize = stockList.size();
+        stockList.removeIf(b4 -> b4.getName().toLowerCase().contains(removeAll));
+        int numberOfBooksRemoved = originalSize - stockList.size();
+        System.out.println("Removed "+numberOfBooksRemoved+" books");
+
+        // Output the updated stocklist
+        OutputStockList(stockList);
+    }
+
+    public static void OutputStockList(ArrayList<Book> stockList) {
+        // Initialise the column widths
+        int firstCol = 0, secondCol = 0, thirdCol = 0, fourthCol = 0;
+        
+        // Iterate through each book to determine the width for each column
+        for (Book b1 : stockList) {
+            if (b1.getName().length() > firstCol) {firstCol = b1.getName().length();}
+            if (b1.getAuthorNames().length() > secondCol) {secondCol = b1.getAuthorNames().length();}
+            if (Double.toString(b1.getPrice()).length() > thirdCol) {thirdCol = Double.toString(b1.getPrice()).length();}
+            if (Integer.toString(b1.getQty()).length() > fourthCol) {fourthCol = Integer.toString(b1.getQty()).length();}
+        }
+
+        System.out.println("\nStocklist");
+        // Output each book
+        for (Book b2 : stockList) {
             System.out.printf("| %-"+firstCol+"s | %-"+secondCol+"s | %"+(thirdCol+1)+".2f | %0"+fourthCol+"d |%n", 
-            b.getName(), b.getAuthorNames(), b.getPrice(), b.getQty());
+            b2.getName(), b2.getAuthorNames(), b2.getPrice(), b2.getQty());
         }
     }
 }
