@@ -48,19 +48,20 @@ public class BookShopApp {
             4
         ));
 
+        // Iterate through each book to determine the width for each column
+        int firstCol = 0;
+        int secondCol = 0;
+        int thirdCol = 0;
+        int fourthCol = 0;
+        for (Book b2 : stockList) {
+            if (b2.getName().length() > firstCol) {firstCol = b2.getName().length();}
+            if (b2.getAuthorNames().length() > secondCol) {secondCol = b2.getAuthorNames().length();}
+            if (Double.toString(b2.getPrice()).length() > thirdCol) {thirdCol = Double.toString(b2.getPrice()).length();}
+            if (Integer.toString(b2.getQty()).length() > fourthCol) {fourthCol = Integer.toString(b2.getQty()).length();}
+        }
+
         // Output each book
         for (Book b : stockList) {
-            // Iterate through each book to determine the largest row
-            int firstCol = 0;
-            int secondCol = 0;
-            int thirdCol = 0;
-            int fourthCol = 0;
-            for (Book b2 : stockList) {
-                if (b2.getName().length() > firstCol) {firstCol = b2.getName().length();}
-                if (b2.getAuthorNames().length() > secondCol) {secondCol = b2.getAuthorNames().length();}
-                if (Double.toString(b2.getPrice()).length() > thirdCol) {thirdCol = Double.toString(b2.getPrice()).length();}
-                if (Integer.toString(b2.getQty()).length() > fourthCol) {fourthCol = Integer.toString(b2.getQty()).length();}
-            }
             System.out.printf("| %-"+firstCol+"s | %-"+secondCol+"s | %"+(thirdCol+1)+".2f | %0"+fourthCol+"d |%n", 
             b.getName(), b.getAuthorNames(), b.getPrice(), b.getQty());
         }
