@@ -47,7 +47,7 @@ public class Book {
         // Construct string of all author's names
         String stringOfAuthorsNames = authors[0].getName();
         for (int i = 1; i < authors.length; i++) {
-            stringOfAuthorsNames = String.join(",", stringOfAuthorsNames, authors[i].getName());
+            stringOfAuthorsNames = String.join(", ", stringOfAuthorsNames, authors[i].getName());
         }
         return stringOfAuthorsNames;
     }
