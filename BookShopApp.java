@@ -4,6 +4,8 @@ public class BookShopApp {
     public static void main(String[] args) {
         // Create a dynamic list of books
         ArrayList<Book> stockList = new ArrayList<Book>();
+        String searchFor = "making software";
+        System.out.println("Search for term(s) '" + searchFor + "' in title...");
 
         // Create some new books and insert them into the list
         // Book 1
@@ -60,7 +62,19 @@ public class BookShopApp {
             if (Integer.toString(b2.getQty()).length() > fourthCol) {fourthCol = Integer.toString(b2.getQty()).length();}
         }
 
+        System.out.println("\nStocklist");
         // Output each book
+        for (Book b : stockList) {
+            System.out.printf("| %-"+firstCol+"s | %-"+secondCol+"s | %"+(thirdCol+1)+".2f | %0"+fourthCol+"d |%n", 
+            b.getName(), b.getAuthorNames(), b.getPrice(), b.getQty());
+        }
+
+        for (Book b3 : stockList) {
+            if (b3.getName().toLowerCase().equals(searchFor)) {b3.setQty(b3.getQty()-1);}
+        }
+
+        // Output the updated stocklist
+        System.out.println("\nUpdated Stocklist");
         for (Book b : stockList) {
             System.out.printf("| %-"+firstCol+"s | %-"+secondCol+"s | %"+(thirdCol+1)+".2f | %0"+fourthCol+"d |%n", 
             b.getName(), b.getAuthorNames(), b.getPrice(), b.getQty());
